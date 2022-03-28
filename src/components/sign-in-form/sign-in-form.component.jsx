@@ -1,9 +1,8 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import "./sign-in-form.styles.scss";
@@ -32,7 +31,7 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const user = await signInAuthUserWithEmailAndPassword(email, password);
+      await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
       navigateTo("/");
     } catch (error) {
