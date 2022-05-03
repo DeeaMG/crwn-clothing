@@ -41,6 +41,8 @@ export const CartProvider = ({ children }) => {
     setCartItems(addCartItem(cartItems, productToAdd));
   };
 
+  const deleteItemFromCart = (productToAdd) => {};
+
   const value = {
     isCartOpen,
     setIsCartOpen,
