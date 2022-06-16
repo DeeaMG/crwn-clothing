@@ -67,6 +67,7 @@ const SignInForm = () => {
           onChange={handleChange}
           name="email"
           value={email}
+          id="signInEmail"
         />
         <FormInput
           label="Password"
@@ -75,6 +76,7 @@ const SignInForm = () => {
           onChange={handleChange}
           name="password"
           value={password}
+          id="signInPass"
         />
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>

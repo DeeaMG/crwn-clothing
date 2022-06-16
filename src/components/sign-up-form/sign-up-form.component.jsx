@@ -62,6 +62,7 @@ const SignUpForm = () => {
           onChange={handleChange}
           name="displayName"
           value={displayName}
+          id="signOutName"
         />
         <FormInput
           label="Email"
@@ -70,6 +71,7 @@ const SignUpForm = () => {
           onChange={handleChange}
           name="email"
           value={email}
+          id="signOutEmail"
         />
         <FormInput
           label="Password"
@@ -78,6 +80,7 @@ const SignUpForm = () => {
           onChange={handleChange}
           name="password"
           value={password}
+          id="signOutPass"
         />
         <FormInput
           label="Confirm Password"
@@ -86,6 +89,7 @@ const SignUpForm = () => {
           onChange={handleChange}
           name="confirmPassword"
           value={confirmPassword}
+          id="signOutPassC"
         />
         <Button type="submit">Sign Up</Button>
       </form>

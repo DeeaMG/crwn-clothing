@@ -1,11 +1,13 @@
 import "./form-input.styles.scss";
+import { useState } from "react";
 
 function FormInput({ label, ...otherProps }) {
+  const [checked, setChecked] = useState(false);
   return (
     <div className="group">
-      <input className="form-input" {...otherProps} />
       {label && (
         <label
+          htmlFor={otherProps.id}
           className={`${
             otherProps.value.length ? "shrink" : ""
           } form-input-label`}
@@ -13,6 +15,7 @@ function FormInput({ label, ...otherProps }) {
           {label}
         </label>
       )}
+      <input className="form-input" {...otherProps} />
     </div>
   );
 }
