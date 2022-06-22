@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-
 import {
   getAuth,
   signInWithPopup,
@@ -9,6 +8,8 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+
+import * as firebase from "firebase/auth";
 
 import {
   getFirestore,
@@ -38,8 +39,8 @@ provider.setCustomParameters({
   prompt: "select_account",
 });
 
-export const auth = getAuth(firebaseApp);
-export const db = getFirestore(firebaseApp);
+export const auth = getAuth();
+export const db = firebase.getFirestore();
 
 export const addCollectionAndDocuments = async (
   collectionKey,
