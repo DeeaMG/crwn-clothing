@@ -1,22 +1,18 @@
-import "./form-input.styles.scss";
-import { useState } from "react";
+import { FormInputLabel, Input, Group } from "./form-input.styles.jsx";
 
 function FormInput({ label, ...otherProps }) {
-  const [checked, setChecked] = useState(false);
   return (
-    <div className="group">
+    <Group>
+      <Input {...otherProps} />
       {label && (
-        <label
+        <FormInputLabel
           htmlFor={otherProps.id}
-          className={`${
-            otherProps.value.length ? "shrink" : ""
-          } form-input-label`}
+          shrink={otherProps.value.length}
         >
           {label}
-        </label>
+        </FormInputLabel>
       )}
-      <input className="form-input" {...otherProps} />
-    </div>
+    </Group>
   );
 }
 
