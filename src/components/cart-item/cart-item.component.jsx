@@ -13,9 +13,9 @@ function CartItem({ cartItem }) {
   const { name, imageUrl, price, quantity } = cartItem;
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
-  const clearItemHandler = () => {
-    return dispatch(clearItemFromCart(cartItems, cartItem)), [dispatch];
-  };
+  const clearItemHandler = () => (
+    dispatch(clearItemFromCart(cartItems, cartItem)), [dispatch]
+  );
 
   return (
     <CartItemContainer>

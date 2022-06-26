@@ -13,9 +13,9 @@ function ProductCard({ product }) {
   const { name, price, imageUrl } = product;
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
-  const addProductToCart = () => {
-    return dispatch(addItemToCart(cartItems, product)), [dispatch];
-  };
+  const addProductToCart = () => (
+    dispatch(addItemToCart(cartItems, product)), [dispatch]
+  );
 
   return (
     <ProductCardContainer>
