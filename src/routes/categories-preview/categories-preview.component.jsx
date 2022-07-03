@@ -8,15 +8,15 @@ import {
 import Spinner from "../../components/spinner/spinner.component";
 
 const CategoriesPreview = () => {
-  const categories = useSelector(selectCategoriesMap);
+  const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
   return (
     <Fragment>
       {isLoading ? (
         <Spinner />
       ) : (
-        Object.keys(categories).map((title) => {
-          const products = categories[title];
+        Object.keys(categoriesMap).map((title) => {
+          const products = categoriesMap[title];
           return (
             <CategoryPreview key={title} title={title} products={products} />
           );
