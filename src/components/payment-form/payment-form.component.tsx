@@ -1,4 +1,5 @@
 import { useState, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { StripeCardElement } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
@@ -20,14 +21,17 @@ const PaymentForm = () => {
   const amount = useSelector(selectCartTotal);
   const currentUser = useSelector(selectCurrentUser);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  let navigate = useNavigate();
 
   const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!stripe || !elements) {
       return;
     }
+
     setIsProcessingPayment(true);
-    const response = await fetch("/.netlify/functions/create-payment-intent", {
+
+    const response = await fetch("/netlify/functions/create-payment-intent", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +62,8 @@ const PaymentForm = () => {
       alert(paymentResult.error.message);
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
-        alert("Payment Successful!");
+        alert("Payment succesfull");
+        navigate("/", { replace: true });
       }
     }
   };
