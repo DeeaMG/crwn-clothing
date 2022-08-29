@@ -1,3 +1,4 @@
+import { useCallback, useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/button.component";
@@ -5,13 +6,22 @@ import CartItem from "../cart-item/cart-item.component";
 import { selectCartItems } from "../../store/cart/cart.selector";
 import { CartDropdownContainer, CartItems, EmptyMessage } from "./cart-dropdown.styles";
 
+const sleep = (miliseconds: number): void => {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if (new Date().getTime() - start > miliseconds) {
+      break;
+    }
+  }
+};
+
 const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems);
   const navigate = useNavigate();
 
-  const goToCheckoutHandler = () => {
+  const goToCheckoutHandler = useCallback(() => {
     navigate("/checkout");
-  };
+  }, []);
 
   return (
     <CartDropdownContainer>
